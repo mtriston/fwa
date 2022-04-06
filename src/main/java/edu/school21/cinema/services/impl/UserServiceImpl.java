@@ -3,10 +3,10 @@ package edu.school21.cinema.services.impl;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.repositories.UserRepository;
 import edu.school21.cinema.services.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

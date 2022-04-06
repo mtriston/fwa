@@ -2,19 +2,17 @@ package edu.school21.cinema.servlets;
 
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.services.UserService;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.context.ApplicationContext;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @WebServlet("/signIn")
@@ -38,8 +36,7 @@ public class SignInServlet extends HttpServlet {
             u.setPassword(null);
             session.setAttribute("user", u);
             req.getRequestDispatcher("profile.jsp").forward(req, resp);
-        }
-        else {
+        } else {
             req.setAttribute("error", "Wrong phone number or password");
             req.getRequestDispatcher("sign_in.jsp").forward(req, resp);
         }

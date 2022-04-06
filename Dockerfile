@@ -9,10 +9,10 @@ RUN mvn -f /home/app/pom.xml clean package
 #
 # Package stage
 #
-FROM tomcat:jdk8-openjdk
+FROM tomcat:jdk11-openjdk-slim
 
 ARG WAR_FILE=/home/app/target/*.war
-COPY --from=build ${WAR_FILE} /usr/local/tomcat/webapp/fwa-app.war
-
+COPY --from=build ${WAR_FILE} /usr/local/tomcat/webapps/cinema.war
+CMD ["jar -xvf /usr/local/tomcat/webapps/cinema.war", "sh"]
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
